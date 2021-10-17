@@ -8,12 +8,18 @@ import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
 
+import {MatInputModule} from '@angular/material/input';
+
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegisterPageRoutingModule
+    RegisterPageRoutingModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   declarations: [RegisterPage]
 })

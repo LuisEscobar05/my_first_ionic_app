@@ -8,12 +8,19 @@ import { PasswordResetPageRoutingModule } from './password-reset-routing.module'
 
 import { PasswordResetPage } from './password-reset.page';
 
+import {MatInputModule} from '@angular/material/input';
+
+import {MatButtonModule} from '@angular/material/button';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PasswordResetPageRoutingModule
+    PasswordResetPageRoutingModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   declarations: [PasswordResetPage]
 })

@@ -4,6 +4,40 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content style="text-align:center !important;">
+  <form class="example-form" #formUser="ngForm">
+    <ion-row>
+      <ion-col>
+        <mat-form-field class="example-full-width" >
+          <mat-label>Usuario</mat-label>
+          <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"required>
+          <mat-hint *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
+        </mat-form-field>
+        <br>
+        <br>
+        <mat-form-field class="example-full-width" >
+          <mat-label>Email</mat-label>
+          <input type="text" matInput placeholder="example@mail.com" name="mail" [(ngModel)]="user.mail" placeholder="Contraseña" (keyup)="validateMail($event)" required>
+          <mat-hint *ngIf="!mailValid" style="color: red;">Ingrese una email valido</mat-hint>
+        </mat-form-field>
+        <br>
+        <br>
+        <mat-form-field class="example-full-width" >
+          <mat-label>Contraseña</mat-label>
+          <input type="password" matInput placeholder="Test12@a" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)" required>
+          <mat-hint *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
+        </mat-form-field>    
+        <br>
+        <br>
+        <mat-form-field class="example-full-width" >
+          <mat-label>Repetir contraseña</mat-label>
+          <input type="password" matInput placeholder="La contraseña debe ser igual al campo anterior" name="repeatCon" [(ngModel)]="user.repeatCon" placeholder="Contraseña" (keyup)="validateSamePassword($event)" required>
+          <mat-hint *ngIf="!passwordValid" style="color: red;">la contraseñas no coinciden</mat-hint>
+        </mat-form-field>        
+        <br>
+        <br>
+        <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Iniciar Sesion</button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

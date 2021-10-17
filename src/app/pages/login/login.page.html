@@ -1,9 +1,39 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log In</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content style="text-align:center !important;">
+  <form class="example-form" #formUser="ngForm">
+    <ion-row>
+      <ion-col>
+        <mat-form-field class="example-full-width" >
+          <mat-label>Usuario</mat-label>
+          <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"required>
+          <mat-hint *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
+        </mat-form-field>
+        <br>
+        <br>
+        <mat-form-field class="example-full-width" >
+          <mat-label>Contraseña</mat-label>
+          <input type="password" matInput placeholder="Contraseña" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)" required>
+          <mat-hint *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
+        </mat-form-field>    
+        <br>
+        <br>
+        <a mat-button [routerLink]="['/password-reset']">¿Has olvidado tu contraseña?</a>
+        <br>
+        <br>
+        <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Iniciar Sesion</button>
+        <br>
+        <br>
+        <a mat-button [routerLink]="['/register']">Registrate aqui</a>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
