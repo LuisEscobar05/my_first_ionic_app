@@ -9,7 +9,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 import { LoginPage } from './login.page';
 
 import {MatInputModule} from '@angular/material/input';
-
+import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
@@ -20,6 +20,7 @@ import {MatButtonModule} from '@angular/material/button';
     LoginPageRoutingModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
   ],
   declarations: [LoginPage]
 })

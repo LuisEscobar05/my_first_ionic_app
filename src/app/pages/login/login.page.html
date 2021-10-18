@@ -8,32 +8,44 @@
 </ion-header>
 
 
-<ion-content style="text-align:center !important;">
+<ion-content style="text-align: center;">
+  <br><br>
   <form class="example-form" #formUser="ngForm">
-    <ion-row>
-      <ion-col>
-        <mat-form-field class="example-full-width" >
-          <mat-label>Usuario</mat-label>
-          <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"required>
-          <mat-hint *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
-        </mat-form-field>
-        <br>
-        <br>
-        <mat-form-field class="example-full-width" >
-          <mat-label>Contraseña</mat-label>
-          <input type="password" matInput placeholder="Contraseña" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)" required>
-          <mat-hint *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
-        </mat-form-field>    
-        <br>
-        <br>
-        <a mat-button [routerLink]="['/password-reset']">¿Has olvidado tu contraseña?</a>
-        <br>
-        <br>
-        <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Iniciar Sesion</button>
-        <br>
-        <br>
-        <a mat-button [routerLink]="['/register']">Registrate aqui</a>
-      </ion-col>
-    </ion-row>
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+          <ion-col >
+            <mat-card>
+              <mat-card-header >
+                <ion-col><img  src="https://img.icons8.com/color/220/000000/user-male-circle--v1.png"/></ion-col> 
+              </mat-card-header>
+              <mat-form-field class="example-full-width" >
+                <mat-label>Usuario</mat-label>
+                <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"required>
+                <mat-hint *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
+              </mat-form-field>
+              <br>
+              <br>
+              <mat-form-field class="example-full-width" >
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput placeholder="Contraseña" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)" required>
+                <mat-hint *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
+              </mat-form-field>    
+              <br>
+              <br>
+              <a mat-button [routerLink]="['/password-reset']">¿Has olvidado tu contraseña?</a>
+              <br><br>
+              <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Iniciar Sesion</button>
+              <br><br>
+              <a mat-button [routerLink]="['/register']">Registrate aqui</a>
+            </mat-card>
+          </ion-col>
+          <ion-col></ion-col>
+       
+      </ion-row>
+    </ion-grid> 
+    
   </form>
+  
+  
 </ion-content>

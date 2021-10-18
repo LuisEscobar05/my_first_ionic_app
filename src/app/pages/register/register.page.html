@@ -1,43 +1,53 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Register</ion-title>
+    <ion-buttons stol="start">
+      <ion-back-button defaultHref="/" text="Regresar"></ion-back-button>
+    </ion-buttons>  
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="text-align:center !important;">
+<ion-content style="text-align: center;">
+  <br><br>
   <form class="example-form" #formUser="ngForm">
-    <ion-row>
-      <ion-col>
-        <mat-form-field class="example-full-width" >
-          <mat-label>Usuario</mat-label>
-          <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"required>
-          <mat-hint *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
-        </mat-form-field>
-        <br>
-        <br>
-        <mat-form-field class="example-full-width" >
-          <mat-label>Email</mat-label>
-          <input type="text" matInput placeholder="example@mail.com" name="mail" [(ngModel)]="user.mail" placeholder="Contraseña" (keyup)="validateMail($event)" required>
-          <mat-hint *ngIf="!mailValid" style="color: red;">Ingrese una email valido</mat-hint>
-        </mat-form-field>
-        <br>
-        <br>
-        <mat-form-field class="example-full-width" >
-          <mat-label>Contraseña</mat-label>
-          <input type="password" matInput placeholder="Test12@a" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)" required>
-          <mat-hint *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
-        </mat-form-field>    
-        <br>
-        <br>
-        <mat-form-field class="example-full-width" >
-          <mat-label>Repetir contraseña</mat-label>
-          <input type="password" matInput placeholder="La contraseña debe ser igual al campo anterior" name="repeatCon" [(ngModel)]="user.repeatCon" placeholder="Contraseña" (keyup)="validateSamePassword($event)" required>
-          <mat-hint *ngIf="!passwordValid" style="color: red;">la contraseñas no coinciden</mat-hint>
-        </mat-form-field>        
-        <br>
-        <br>
-        <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Iniciar Sesion</button>
-      </ion-col>
-    </ion-row>
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <mat-card>
+            <mat-card-header >
+              <ion-col >
+                <h1>Registro</h1>
+              </ion-col> 
+            </mat-card-header>
+            <mat-form-field class="example-full-width" >
+              <mat-label>Usuario</mat-label>
+              <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"required>
+              <mat-hint *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="example-full-width" >
+              <mat-label>Email</mat-label>
+              <input type="text" matInput placeholder="example@mail.com" name="mail" [(ngModel)]="user.mail" placeholder="Contraseña" (keyup)="validateMail($event)" required>
+              <mat-hint *ngIf="!mailValid" style="color: red;">Ingrese una email valido</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="example-full-width" >
+              <mat-label>Contraseña</mat-label>
+              <input type="password" matInput placeholder="Test12@a" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)" required>
+              <mat-hint *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
+            </mat-form-field>    
+            <br><br>
+            <mat-form-field class="example-full-width" >
+              <mat-label>Repetir contraseña</mat-label>
+              <input type="password" matInput placeholder="La contraseña debe ser igual al campo anterior" name="repeatCon" [(ngModel)]="user.repeatCon" placeholder="Contraseña" (keyup)="validateSamePassword($event)" required>
+              <mat-hint *ngIf="!passwordValid" style="color: red;">la contraseñas no coinciden</mat-hint>
+            </mat-form-field>        
+            <br><br>
+            <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Iniciar Sesion</button>
+          </mat-card>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid> 
   </form>
 </ion-content>
