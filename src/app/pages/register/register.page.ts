@@ -62,6 +62,7 @@ export class RegisterPage{
     let newValue = event.target.value;
     console.log(newValue);
     if(this.user.contrasena == this.user.repeatCon){
+      this.samePassword= true;
       if(this.userValid && this.mailValid){
         this.isDisabled=false;
       }
