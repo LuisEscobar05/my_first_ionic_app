@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   },
+  {
+    path: 'carousel',
+    loadChildren: () => import('./pages/carousel/carousel.module').then( m => m.CarouselPageModule)
+  },
 ];
 
 @NgModule({
