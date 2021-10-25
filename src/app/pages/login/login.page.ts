@@ -48,8 +48,9 @@ export class LoginPage{
 
   async onSubmit(_form: NgForm) {
     console.log(this.user);
- 
     alert(this.user.usario + ' : ' + this.user.contrasena)
+    
+
   }
 
 }

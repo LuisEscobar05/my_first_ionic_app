@@ -17,7 +17,7 @@
           <ion-col >
             <mat-card>
               <mat-card-header >
-                <ion-col><img  src="https://img.icons8.com/color/220/000000/user-male-circle--v1.png"/></ion-col>
+                <ion-col><img width="128" height="128" src="https://cdn-icons.flaticon.com/png/512/3299/premium/3299333.png?token=exp=1635171323~hmac=b3eea1fda07887079876690bf56a8dda"/></ion-col>
               </mat-card-header>
               <mat-form-field class="example-full-width" >
                 <mat-label>Usuario</mat-label>
@@ -39,7 +39,7 @@
               <br>
               <a mat-button [routerLink]="['/password-reset']">¿Has olvidado tu contraseña?</a>
               <br><br>
-              <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Iniciar Sesion</button>
+              <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)" [routerLink]="['/tabs']">Iniciar Sesion</button>
               <br><br>
               <a mat-button [routerLink]="['/register']">Registrate aqui</a>
             </mat-card>
