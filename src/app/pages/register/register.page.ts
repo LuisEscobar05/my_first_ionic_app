@@ -6,8 +6,6 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage{
-  constructor() {}
-
   isDisabled = true;
   userValid=true;
   mailValid=true;
@@ -18,16 +16,17 @@ export class RegisterPage{
     mail:'',
     contrasena: '',
     repeatCon:'',
-  }
+  };
+  constructor() {}
 
   validateUser(event: any){
     this.isDisabled=true;
     this.userValid=false;
     let newValue = event.target.value;
     console.log(newValue);
- 
+
     let regExp = new RegExp('^[A-Za-z0-9]{8,30}$');
- 
+
     if(regExp.test(newValue))
       this.userValid=true;
   }
@@ -37,12 +36,12 @@ export class RegisterPage{
     this.mailValid=false;
     let newValue = event.target.value;
     console.log(newValue);
- 
+
     let regExp = new RegExp('^[A-Za-z0-9._]+@[A-Za-z]+(\.[A-Za-z]+)(\.[A-Za-z]+)(\.[A-Za-z]+)$');
- 
+
     if(regExp.test(newValue))
       this.mailValid=true;
-    
+
   }
 
   validatePassword(event: any){
@@ -50,9 +49,9 @@ export class RegisterPage{
     this.passwordValid=false;
     let newValue = event.target.value;
     console.log(newValue);
- 
+
     let regExp = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$');
- 
+
     if(regExp.test(newValue))
       this.passwordValid=true;
   }
@@ -61,7 +60,7 @@ export class RegisterPage{
     this.samePassword=false;
     let newValue = event.target.value;
     console.log(newValue);
-    if(this.user.contrasena == this.user.repeatCon){
+    if(this.userValid && this.mailValid && this.passwordValid){
       this.samePassword= true;
       if(this.userValid && this.mailValid){
         this.isDisabled=false;
@@ -71,7 +70,7 @@ export class RegisterPage{
 
   async onSubmit(_form: NgForm) {
     console.log(this.user);
- 
+
     alert(this.user.usario + ' : ' + this.user.mail + ' : ' + this.user.contrasena + ' : ' + this.user.repeatCon );
   }
 

@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Tabs</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="carousel">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-label>Carousel</ion-label>
+    </ion-tab-button>
 
-<ion-content>
+    <ion-tab-button tab="barcode">
+      <ion-icon name="scan-outline"></ion-icon>
+      <ion-label>Scanear Codigo</ion-label>
+    </ion-tab-button>
 
-</ion-content>
+    <ion-tab-button tab="update-user">
+      <ion-icon name="information-outline"></ion-icon>
+      <ion-label>Actualizar Infomación</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="notifications">
+      <ion-icon name="notifications-outline"></ion-icon>
+      <ion-label>Notificaciones</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

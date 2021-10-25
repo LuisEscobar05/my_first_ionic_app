@@ -1,0 +1,22 @@
+ion-slides {
+  height: 100%;
+  --bullet-background: black;
+  --bullet-background-active: blue;
+}
+// .swiper-slide {
+//   display: block;
+// }
+
+
+.swiper-slide img {
+  max-height: 50%;
+  max-width: 80%;
+  pointer-events: none;
+}
+
+
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
+}
+

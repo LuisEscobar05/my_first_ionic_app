@@ -8,12 +8,17 @@ import { NotificationsPageRoutingModule } from './notifications-routing.module';
 
 import { NotificationsPage } from './notifications.page';
 
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NotificationsPageRoutingModule
+    NotificationsPageRoutingModule,
+    MatInputModule,
+    MatCardModule,
   ],
   declarations: [NotificationsPage]
 })

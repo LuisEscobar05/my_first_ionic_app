@@ -23,8 +23,8 @@
               <mat-label>Usuario</mat-label>
               <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"
               onkeypress="if(this.value.length==30) return false;" required>
-              <mat-hint *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
-              <mat-hint aling="end">{{usuarioCount.value.length}}/30</mat-hint>
+              <mat-hint align="start" *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
+              <mat-hint align="end">{{usuarioCount.value.length}}/30</mat-hint>
             </mat-form-field>
             <br><br>
             <mat-form-field class="example-full-width" >
@@ -37,19 +37,19 @@
               <mat-label>Contraseña</mat-label>
               <input type="password" #passwordCount matInput placeholder="Test12@a" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)"
               onkeypress="if(this.value.length==20) return false;" required>
-              <mat-hint *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
-              <mat-hint aling="end">{{passwordCount.value.length}}/20</mat-hint>
+              <mat-hint align="start" *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
+              <mat-hint align="end" >{{passwordCount.value.length}}/20</mat-hint>
             </mat-form-field>
             <br><br>
             <mat-form-field class="example-full-width" >
               <mat-label>Repetir contraseña</mat-label>
-              <input type="password" matInput placeholder="La contraseña debe ser igual al campo anterior" name="repeatCon" [(ngModel)]="user.repeatCon" placeholder="Contraseña" (keyup)="validateSamePassword($event)"
+              <input type="password" #repeatPassword matInput placeholder="La contraseña debe ser igual al campo anterior" name="repeatCon" [(ngModel)]="user.repeatCon" placeholder="Contraseña" (keyup)="validateSamePassword($event)"
               onkeypress="if(this.value.length==20) return false;" required>
-              <mat-hint *ngIf="!samePassword" style="color: red;">la contraseñas no coinciden</mat-hint>
-              <mat-hint aling="end">{{passwordCount.value.length}}/20</mat-hint>
+              <mat-hint align="start" *ngIf="!samePassword" style="color: red;">la contraseñas no coinciden</mat-hint>
+              <mat-hint align="end">{{repeatPassword.value.length}}/20</mat-hint>
             </mat-form-field>
             <br><br>
-            <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Iniciar Sesion</button>
+            <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Registrar</button>
           </mat-card>
         </ion-col>
         <ion-col></ion-col>

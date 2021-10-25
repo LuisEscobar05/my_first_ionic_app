@@ -17,20 +17,24 @@
           <ion-col >
             <mat-card>
               <mat-card-header >
-                <ion-col><img  src="https://img.icons8.com/color/220/000000/user-male-circle--v1.png"/></ion-col> 
+                <ion-col><img  src="https://img.icons8.com/color/220/000000/user-male-circle--v1.png"/></ion-col>
               </mat-card-header>
               <mat-form-field class="example-full-width" >
                 <mat-label>Usuario</mat-label>
-                <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"required>
-                <mat-hint *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
+                <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"
+                onkeypress="if(this.value.length==30) return false;" required>
+                <mat-hint align="start" *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
+                <mat-hint align="end">{{usuarioCount.value.length}}/30</mat-hint>
               </mat-form-field>
               <br>
               <br>
               <mat-form-field class="example-full-width" >
                 <mat-label>Contraseña</mat-label>
-                <input type="password" matInput placeholder="Contraseña" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)" required>
-                <mat-hint *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
-              </mat-form-field>    
+                <input type="password" #passwordCount matInput placeholder="Contraseña" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)"
+                onkeypress="if(this.value.length==20) return false;" required>
+                <mat-hint align="start" *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
+                <mat-hint align="end" >{{passwordCount.value.length}}/20</mat-hint>
+              </mat-form-field>
               <br>
               <br>
               <a mat-button [routerLink]="['/password-reset']">¿Has olvidado tu contraseña?</a>
@@ -41,11 +45,11 @@
             </mat-card>
           </ion-col>
           <ion-col></ion-col>
-       
+
       </ion-row>
-    </ion-grid> 
-    
+    </ion-grid>
+
   </form>
-  
-  
+
+
 </ion-content>

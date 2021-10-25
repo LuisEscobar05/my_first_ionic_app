@@ -1,9 +1,57 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>UpdateUser</ion-title>
+    <ion-title>Actualizar información</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content style="text-align: center;">
+  <br><br>
+  <form class="example-form" #formUser="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <mat-card>
+              <mat-card-header>
+                <ion-avatar>
+                  <img  src="https://cdn-icons-png.flaticon.com/512/5939/5939437.png"/>
+                </ion-avatar>
+              </mat-card-header>
+              <mat-form-field class="example-full-width" >
+              <mat-label>Usuario</mat-label>
+              <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"
+              onkeypress="if(this.value.length==30) return false;" required>
+              <mat-hint align="start" *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
+              <mat-hint align="end">{{usuarioCount.value.length}}/30</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="example-full-width" >
+              <mat-label>Email</mat-label>
+              <input type="text" matInput placeholder="example@mail.com" name="mail" [(ngModel)]="user.mail" placeholder="Contraseña" (keyup)="validateMail($event)" required>
+              <mat-hint *ngIf="!mailValid" style="color: red;">Ingrese una email valido</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="example-full-width" >
+              <mat-label>Contraseña</mat-label>
+              <input type="password" #passwordCount matInput placeholder="Test12@a" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)"
+              onkeypress="if(this.value.length==20) return false;" required>
+              <mat-hint align="start" *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida                                                </mat-hint>
+              <mat-hint align="end">{{passwordCount.value.length}}/20</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <mat-form-field class="example-full-width" >
+              <mat-label>Repetir contraseña</mat-label>
+              <input type="password" #repeatPassword matInput placeholder="La contraseña debe ser igual al campo anterior" name="repeatCon" [(ngModel)]="user.repeatCon" placeholder="Contraseña" (keyup)="validateSamePassword($event)"
+              onkeypress="if(this.value.length==20) return false;" required>
+              <mat-hint align="start" *ngIf="!samePassword" style="color: red;">la contraseñas no coinciden</mat-hint>
+              <mat-hint align="end">{{repeatPassword.value.length}}/20</mat-hint>
+            </mat-form-field>
+            <br><br>
+            <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Actualizar informacion</button>
+          </mat-card>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
