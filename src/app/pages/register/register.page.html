@@ -9,7 +9,7 @@
 <ion-content style="text-align: center;">
   <br><br>
   <form class="example-form" #formUser="ngForm">
-    
+
     <ion-card>
       <ion-card-header >
         <ion-col >
@@ -18,7 +18,7 @@
       </ion-card-header>
       <mat-form-field class="example-full-width" >
         <mat-label>Usuario</mat-label>
-        <input type="text" #usuarioCount matInput name="usario" [(ngModel)]="user.usario" placeholder="Usuario" (keyup)="validateUser($event)"
+        <input type="text" #usuarioCount matInput name="usuario" [(ngModel)]="user.usuario" placeholder="Usuario" (keyup)="validateUser($event)"
         onkeypress="if(this.value.length==30) return false;" required>
         <mat-hint align="start" *ngIf="!userValid" style="color: red;">Ingrese un usuario valido</mat-hint>
         <mat-hint align="end">{{usuarioCount.value.length}}/30</mat-hint>
@@ -49,6 +49,6 @@
       <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Registrar</button>
       <br><br>
     </ion-card>
-       
+
   </form>
 </ion-content>

@@ -8,28 +8,53 @@ import { NgForm } from '@angular/forms';
 })
 export class UpdateUserPage{
   isDisabled = true;
-  userValid=true;
+  nameValid=true;
   mailValid=true;
-  passwordValid=true;
-  samePassword=true;
+  lparentValid=true;
+  lmotherValid=true;
+  numberPhoneValid=true;
   user = {
-    usario: '',
+    name: '',
     mail:'',
-    contrasena: '',
-    repeatCon:'',
+    lparent: '',
+    lmother:'',
+    numberPhone:'',
   };
   constructor() {}
 
-  validateUser(event: any){
+  validateName(event: any){
     this.isDisabled=true;
-    this.userValid=false;
+    this.nameValid=false;
     let newValue = event.target.value;
     console.log(newValue);
 
-    let regExp = new RegExp('^[A-Za-z0-9]{8,30}$');
+    let regExp = new RegExp('^[A-Za-z]{8,30}$');
 
     if(regExp.test(newValue))
-      this.userValid=true;
+      this.nameValid=true;
+  }
+
+
+  validateLastNameP(event: any){
+    this.isDisabled=true;
+    this.lparentValid=false;
+    let newValue = event.target.value;
+    console.log(newValue);
+
+    let regExp = new RegExp('^[A-Za-z]{8,30}$')
+
+    if(regExp.test(newValue))
+      this.lparentValid=true;
+  }
+
+  validateLastNameM(event: any){
+    this.isDisabled=true;
+    this.lmotherValid=false;
+    let newValue = event.target.value;
+    console.log(newValue);
+    let regExp = new RegExp('^[A-Za-z]{8,30}$')
+    if(regExp.test(newValue))
+    this.lmotherValid=true;
   }
 
   validateMail(event: any){
@@ -44,34 +69,23 @@ export class UpdateUserPage{
       this.mailValid=true;
 
   }
-
-  validatePassword(event: any){
+  validateNumberPhone(event:any){
     this.isDisabled=true;
-    this.passwordValid=false;
+    this.numberPhoneValid=false;
     let newValue = event.target.value;
     console.log(newValue);
-
-    let regExp = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$');
-
-    if(regExp.test(newValue))
-      this.passwordValid=true;
-  }
-  validateSamePassword(event: any){
-    this.isDisabled=true;
-    this.samePassword=false;
-    let newValue = event.target.value;
-    console.log(newValue);
-    if(this.user.contrasena == this.user.repeatCon){
-      this.samePassword= true;
-      if(this.userValid && this.mailValid && this.passwordValid){
+    let regExp = new RegExp('^[0-9]{10,30}$');
+    if(regExp.test(newValue)){
+      this.numberPhoneValid=true;
+      if(this.nameValid && this.lparentValid && this.lmotherValid && this.mailValid && this.numberPhoneValid){
         this.isDisabled=false;
       }
     }
-  }
 
+  }
   async onSubmit(_form: NgForm) {
     console.log(this.user);
 
-    alert(this.user.usario + ' : ' + this.user.mail + ' : ' + this.user.contrasena + ' : ' + this.user.repeatCon );
+    alert(this.user.name + ' : '  + this.user.lparent +  ' : ' + this.user.lmother + ':'+  this.user.mail + ' : ' + this.user.numberPhone);
   }
 }

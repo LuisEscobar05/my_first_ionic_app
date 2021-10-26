@@ -12,7 +12,7 @@ export class RegisterPage{
   passwordValid=true;
   samePassword=true;
   user = {
-    usario: '',
+    usuario: '',
     mail:'',
     contrasena: '',
     repeatCon:'',
@@ -71,7 +71,7 @@ export class RegisterPage{
   async onSubmit(_form: NgForm) {
     console.log(this.user);
 
-    alert(this.user.usario + ' : ' + this.user.mail + ' : ' + this.user.contrasena + ' : ' + this.user.repeatCon );
+    alert(this.user.usuario + ' : ' + this.user.mail + ' : ' + this.user.contrasena + ' : ' + this.user.repeatCon );
   }
 
 
