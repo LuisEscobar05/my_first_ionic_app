@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { BarcodePageRoutingModule } from './barcode-routing.module';
+import {MatButtonModule} from '@angular/material/button';
 
 import { BarcodePage } from './barcode.page';
 
@@ -13,7 +14,8 @@ import { BarcodePage } from './barcode.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    BarcodePageRoutingModule
+    BarcodePageRoutingModule,
+    MatButtonModule,
   ],
   declarations: [BarcodePage]
 })
