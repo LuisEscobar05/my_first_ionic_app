@@ -46,9 +46,9 @@
       <mat-form-field class="example-full-width" >
         <mat-label>Numero telefonico</mat-label>
         <input type="text" #numberPhoneCount matInput name="numberPhone" [(ngModel)]="user.numberPhone" placeholder="Telefono" (keyup)="validateNumberPhone($event)"
-        onkeypress="if(this.value.length==30) return false;" required>
+        onkeypress="if(this.value.length==10) return false;" required>
         <mat-hint align="start" *ngIf="!numberPhoneValid" style="color: red;">Ingrese un numero de telefono valido</mat-hint>
-        <mat-hint align="end">{{numberPhoneCount.value.length}}/30</mat-hint>
+        <mat-hint align="end">{{numberPhoneCount.value.length}}/10</mat-hint>
       </mat-form-field>
       <br><br>
       <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Actualizar informacion</button>

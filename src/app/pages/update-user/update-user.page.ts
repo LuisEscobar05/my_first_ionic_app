@@ -28,7 +28,7 @@ export class UpdateUserPage{
     let newValue = event.target.value;
     console.log(newValue);
 
-    let regExp = new RegExp('^[A-Za-z]{8,30}$');
+    let regExp = new RegExp('^[A-Za-z]{3,30}$');
 
     if(regExp.test(newValue))
       this.nameValid=true;
@@ -41,7 +41,7 @@ export class UpdateUserPage{
     let newValue = event.target.value;
     console.log(newValue);
 
-    let regExp = new RegExp('^[A-Za-z]{8,30}$')
+    let regExp = new RegExp('^[A-Za-z]{3,30}$')
 
     if(regExp.test(newValue))
       this.lparentValid=true;
@@ -52,7 +52,7 @@ export class UpdateUserPage{
     this.lmotherValid=false;
     let newValue = event.target.value;
     console.log(newValue);
-    let regExp = new RegExp('^[A-Za-z]{8,30}$')
+    let regExp = new RegExp('^[A-Za-z]{3,30}$')
     if(regExp.test(newValue))
     this.lmotherValid=true;
   }
@@ -74,7 +74,7 @@ export class UpdateUserPage{
     this.numberPhoneValid=false;
     let newValue = event.target.value;
     console.log(newValue);
-    let regExp = new RegExp('^[0-9]{10,30}$');
+    let regExp = new RegExp('^[0-9]{10,10}$');
     if(regExp.test(newValue)){
       this.numberPhoneValid=true;
       if(this.nameValid && this.lparentValid && this.lmotherValid && this.mailValid && this.numberPhoneValid){
