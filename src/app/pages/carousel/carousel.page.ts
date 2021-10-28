@@ -11,7 +11,7 @@ export class CarouselPage{
   slideOpts = {
     autoplay:true,
     loop:true,
-    speed:60,
+    speed:10,
     on: {
       beforeInit() {
         const swiper = this;
