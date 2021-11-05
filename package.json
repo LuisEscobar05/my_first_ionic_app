@@ -10,15 +10,13 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --configuration=production"
+    "heroku-postbuild": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.1.1",
     "@angular/cdk": "^12.2.10",
     "@angular/common": "~12.1.1",
-    "@angular/cli": "~12.1.1",
-    "@angular/compiler-cli": "~12.1.1",
     "@angular/core": "~12.1.1",
     "@angular/forms": "~12.1.1",
     "@angular/material": "^12.2.10",
@@ -37,7 +35,6 @@
     "rxjs": "~6.6.0",
     "swiper": "^7.0.9",
     "tslib": "^2.2.0",
-    "typescript": "~4.2.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
