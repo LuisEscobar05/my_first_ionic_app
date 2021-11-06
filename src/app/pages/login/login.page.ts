@@ -22,9 +22,9 @@ export class LoginPage{
     this.userValid=false;
     let newValue = event.target.value;
     console.log(newValue);
- 
+
     let regExp = new RegExp('^[A-Za-z0-9]{8,30}$');
- 
+
     if(regExp.test(newValue)){
       this.userValid=true;
     }
@@ -35,9 +35,9 @@ export class LoginPage{
     this.passwordValid=false;
     let newValue = event.target.value;
     console.log(newValue);
- 
+
     let regExp = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,20}$');
- 
+
     if(regExp.test(newValue)){
       this.passwordValid=true;
       if(this.userValid==true&&this.passwordValid==true){
@@ -49,7 +49,7 @@ export class LoginPage{
   async onSubmit(_form: NgForm) {
     console.log(this.user);
     alert(this.user.usario + ' : ' + this.user.contrasena)
-    
+
 
   }
 
