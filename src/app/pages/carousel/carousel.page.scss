@@ -1,22 +1,26 @@
 ion-slides {
-  height: 85%;
+  margin-top: 20px;
+  width: 60%;
+  height: 100%;
   --bullet-background: black;
   --bullet-background-active: blue;
 }
-// .swiper-slide {
-//   display: block;
-// }
-
-
+.swiper-pagination {
+  margin-bottom:300px !important;
+}
 .swiper-slide img {
   max-height: 50%;
   max-width: 80%;
   pointer-events: none;
 }
 
+.btn{
+  margin-top: 35px;
+}
+
 img{
- height: 450px !important;
- width: 70% !important;
+  width:  400px !important;
+  height: 400px !important;
 }
 
 
@@ -24,4 +28,5 @@ img{
   --ion-safe-area-top: 20px;
   --ion-safe-area-bottom: 22px;
 }
+
 
