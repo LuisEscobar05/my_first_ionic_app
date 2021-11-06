@@ -1,13 +1,12 @@
 ion-slides {
-  margin-top: 20px;
-  width: 60%;
-  height: 100%;
+  // margin-top: 20px;
+  height: 80%;
   --bullet-background: black;
   --bullet-background-active: blue;
 }
-.swiper-pagination {
-  margin-bottom:300px !important;
-}
+// .swiper-pagination {
+//   margin-bottom:300px !important;
+// }
 .swiper-slide img {
   max-height: 50%;
   max-width: 80%;
@@ -19,8 +18,8 @@ ion-slides {
 }
 
 img{
-  width:  400px !important;
-  height: 400px !important;
+  height: 450px !important;
+  width: 70% !important;
 }
 
 
