@@ -1,9 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+    <ion-buttons slot="end" [routerLink]="['/login']">
+      <ion-icon name="exit-outline" style="width: 30px; height: 30px;" ></ion-icon>
     </ion-buttons>
     <ion-title>Carousel</ion-title>
+    <!-- <ion-icon name="exit-outline"></ion-icon> -->
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen >
@@ -64,7 +65,6 @@
           <img
             src="https://images.unsplash.com/photo-1634909799456-39b0e3b7209f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" />
       </ion-slide>
-
     </ion-slides>
     <ion-row style="text-align: center;">
       <ion-col>
