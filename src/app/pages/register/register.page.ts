@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage{
+export class RegisterPage implements OnInit{
   isDisabled = true;
   userValid=true;
   mailValid=true;
@@ -17,7 +20,17 @@ export class RegisterPage{
     contrasena: '',
     repeatCon:'',
   };
-  constructor() {}
+  constructor(
+    private router: Router,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private loginService: LoginService,
+
+  ) {}
+
+  ngOnInit(){
+
+  }
 
   validateUser(event: any){
     this.isDisabled=true;
@@ -69,9 +82,28 @@ export class RegisterPage{
   }
 
   async onSubmit(_form: NgForm) {
-    console.log(this.user);
+    console.log(_form.value);
 
     alert(this.user.usuario + ' : ' + this.user.mail + ' : ' + this.user.contrasena + ' : ' + this.user.repeatCon );
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    this.loginService.register(this.user.usuario,this.user.mail,this.user.contrasena ).then(
+      (res) => {
+        loading.dismiss();
+        this.router.navigateByUrl('/tabs', {replaceUrl: true});
+      },
+      async (err) => {
+        loading.dismiss();
+        const alert = await this.alertController.create({
+          header: 'A ocurrido un eror!' ,
+          message: err.message,
+          buttons: ['OK'],
+        });
+        await alert.present();
+
+      }
+    )
   }
 
 
