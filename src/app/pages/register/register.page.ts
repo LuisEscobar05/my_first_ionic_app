@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage{
+export class RegisterPage implements OnInit{
   isDisabled = true;
   userValid=true;
   mailValid=true;
@@ -17,7 +20,17 @@ export class RegisterPage{
     contrasena: '',
     repeatCon:'',
   };
-  constructor() {}
+  constructor(
+    private router: Router,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private loginService: LoginService,
+
+  ) {}
+
+  ngOnInit(){
+
+  }
 
   validateUser(event: any){
     this.isDisabled=true;
@@ -61,17 +74,33 @@ export class RegisterPage{
     let newValue = event.target.value;
     console.log(newValue);
     if(this.userValid && this.mailValid && this.passwordValid){
-      this.samePassword= true;
-      if(this.userValid && this.mailValid){
+      if(this.user.contrasena == this.user.repeatCon){
+        this.samePassword= true;
         this.isDisabled=false;
       }
     }
   }
 
   async onSubmit(_form: NgForm) {
-    console.log(this.user);
+    const loading = await this.loadingController.create();
+    await loading.present();
 
-    alert(this.user.usuario + ' : ' + this.user.mail + ' : ' + this.user.contrasena + ' : ' + this.user.repeatCon );
+    this.loginService.signUp(this.user.usuario,this.user.mail,this.user.contrasena ).then(
+      (res) => {
+        loading.dismiss();
+        this.router.navigateByUrl('/tabs', {replaceUrl: true});
+      },
+      async (err) => {
+        loading.dismiss();
+        const alert = await this.alertController.create({
+          header: 'A ocurrido un eror!' ,
+          message: err.message,
+          buttons: ['OK'],
+        });
+        await alert.present();
+
+      }
+    )
   }
 
 

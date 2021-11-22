@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="end" [routerLink]="['/login']">
+    <ion-buttons slot="end" (click)="signOut()">
       <ion-icon name="exit-outline" style="width: 30px; height: 30px;" ></ion-icon>
     </ion-buttons>
     <ion-title>Notificaciones</ion-title>

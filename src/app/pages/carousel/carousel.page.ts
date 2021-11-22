@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
 import { ServicesService } from '../../servicescarousel/services.service'
 import { AlertController, ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.page.html',
@@ -10,12 +12,16 @@ export class CarouselPage{
 
   img=[];
 
-  constructor(private servicesServices: ServicesService, private alertCtrl: AlertController, private modalCtrl: ModalController) {
+  constructor(private servicesServices: ServicesService, private alertCtrl: AlertController, private modalCtrl: ModalController, private loginService: LoginService,
+    private router: Router) {
+
     this.servicesServices.getImg().subscribe(res =>{
       console.log(res)
       this.img = res;
     })
+   
   }
+
 
   slideOpts = {
     autoplay:true,
@@ -107,4 +113,10 @@ export class CarouselPage{
       }
     }
   };
+
+  signOut(){
+    this.loginService.singOut().then(()=>{
+      this.router.navigateByUrl('/', {replaceUrl: true});
+    });
+  }
 }
