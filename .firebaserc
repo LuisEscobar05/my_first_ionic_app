@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "barcode-eb236": {
+      "hosting": {
+        "app": [
+          "barcode-eb236"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "barcode-eb236"
+  }
+}
