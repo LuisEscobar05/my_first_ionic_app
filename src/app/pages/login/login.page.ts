@@ -1,5 +1,8 @@
 import { Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController, LoadingController } from '@ionic/angular';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -7,13 +10,19 @@ import {NgForm} from '@angular/forms';
 })
 export class LoginPage{
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private alertController: AlertController,
+    private loadingController: LoadingController,
+    private loginService: LoginService
+  ) {}
 
   isDisabled = true;
   userValid=true;
+  mailValid=true;
   passwordValid=true;
   user = {
-    usario: '',
+    mail: '',
     contrasena: ''
   }
 
@@ -30,6 +39,19 @@ export class LoginPage{
     }
   }
 
+  validateMail(event: any){
+    this.isDisabled=true;
+    this.mailValid=false;
+    let newValue = event.target.value;
+    console.log(newValue);
+
+    let regExp = new RegExp('^[A-Za-z0-9._]+@[A-Za-z]+(\.[A-Za-z]+)(\.[A-Za-z]+)(\.[A-Za-z]+)$');
+
+    if(regExp.test(newValue))
+      this.mailValid=true;
+
+  }
+
   validatePassword(event: any){
     this.isDisabled=true;
     this.passwordValid=false;
@@ -40,7 +62,7 @@ export class LoginPage{
 
     if(regExp.test(newValue)){
       this.passwordValid=true;
-      if(this.userValid==true&&this.passwordValid==true){
+      if(this.mailValid==true&&this.passwordValid==true){
         this.isDisabled=false;
       }
     }
@@ -48,8 +70,27 @@ export class LoginPage{
 
   async onSubmit(_form: NgForm) {
     console.log(this.user);
-    alert(this.user.usario + ' : ' + this.user.contrasena)
+    alert(this.user.mail + ' : ' + this.user.contrasena)
 
+    const loading = await this.loadingController.create();
+    await loading.present();
+
+    this.loginService.singIn(this.user.mail, this.user.contrasena).then(
+      (res) => {
+        loading.dismiss();
+        this.router.navigateByUrl('/tabs', {replaceUrl: true});
+      },
+      async (err) => {
+        loading.dismiss();
+        const alert = await this.alertController.create({
+          header: 'Alguno de sus datos es incorrecto' ,
+          message: err.message,
+          buttons: ['OK'],
+        });
+        await alert.present();
+
+      }
+    )
 
   }
 
