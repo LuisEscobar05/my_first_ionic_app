@@ -74,8 +74,8 @@ export class RegisterPage implements OnInit{
     let newValue = event.target.value;
     console.log(newValue);
     if(this.userValid && this.mailValid && this.passwordValid){
-      this.samePassword= true;
-      if(this.userValid && this.mailValid){
+      if(this.user.contrasena == this.user.repeatCon){
+        this.samePassword= true;
         this.isDisabled=false;
       }
     }
