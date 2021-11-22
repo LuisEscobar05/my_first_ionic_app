@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.page.html',
@@ -6,7 +8,10 @@ import { Component} from '@angular/core';
 })
 export class CarouselPage{
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+  ) { }
 
   slideOpts = {
     autoplay:true,
@@ -98,4 +103,10 @@ export class CarouselPage{
       }
     }
   };
+
+  signOut(){
+    this.loginService.singOut().then(()=>{
+      this.router.navigateByUrl('/', {replaceUrl: true});
+    });
+  }
 }

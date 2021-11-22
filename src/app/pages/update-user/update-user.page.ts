@@ -1,5 +1,7 @@
 import { Component} from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-update-user',
@@ -20,7 +22,10 @@ export class UpdateUserPage{
     lmother:'',
     numberPhone:'',
   };
-  constructor() {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+  ) {}
 
   validateName(event: any){
     this.isDisabled=true;
@@ -87,5 +92,11 @@ export class UpdateUserPage{
     console.log(this.user);
 
     alert(this.user.name + ' : '  + this.user.lparent +  ' : ' + this.user.lmother + ':'+  this.user.mail + ' : ' + this.user.numberPhone);
+  }
+
+  signOut(){
+    this.loginService.singOut().then(()=>{
+      this.router.navigateByUrl('/', {replaceUrl: true});
+    });
   }
 }
