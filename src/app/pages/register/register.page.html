@@ -26,7 +26,7 @@
       <br><br>
       <mat-form-field class="example-full-width" >
         <mat-label>Email</mat-label>
-        <input type="text" matInput placeholder="example@mail.com" name="mail" [(ngModel)]="user.mail" placeholder="Contraseña" (keyup)="validateMail($event)" required>
+        <input type="text" matInput placeholder="example@mail.com" name="mail" [(ngModel)]="user.mail" (keyup)="validateMail($event)" required>
         <mat-hint *ngIf="!mailValid" style="color: red;">Ingrese una email valido</mat-hint>
       </mat-form-field>
       <br><br>

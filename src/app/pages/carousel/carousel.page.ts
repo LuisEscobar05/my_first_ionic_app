@@ -1,4 +1,6 @@
 import { Component} from '@angular/core';
+import { ServicesService } from '../../servicescarousel/services.service'
+import { AlertController, ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.page.html',
@@ -6,7 +8,14 @@ import { Component} from '@angular/core';
 })
 export class CarouselPage{
 
-  constructor() { }
+  img=[];
+
+  constructor(private servicesServices: ServicesService, private alertCtrl: AlertController, private modalCtrl: ModalController) {
+    this.servicesServices.getImg().subscribe(res =>{
+      console.log(res)
+      this.img = res;
+    })
+  }
 
   slideOpts = {
     autoplay:true,
