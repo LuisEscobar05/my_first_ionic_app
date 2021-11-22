@@ -88,7 +88,7 @@ export class RegisterPage implements OnInit{
     const loading = await this.loadingController.create();
     await loading.present();
 
-    this.loginService.register(this.user.usuario,this.user.mail,this.user.contrasena ).then(
+    this.loginService.signUp(this.user.usuario,this.user.mail,this.user.contrasena ).then(
       (res) => {
         loading.dismiss();
         this.router.navigateByUrl('/tabs', {replaceUrl: true});
