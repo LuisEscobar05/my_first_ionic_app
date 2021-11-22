@@ -69,8 +69,6 @@ export class LoginPage{
   }
 
   async onSubmit(_form: NgForm) {
-    console.log(this.user);
-    alert(this.user.mail + ' : ' + this.user.contrasena)
 
     const loading = await this.loadingController.create();
     await loading.present();

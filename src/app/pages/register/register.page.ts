@@ -82,9 +82,6 @@ export class RegisterPage implements OnInit{
   }
 
   async onSubmit(_form: NgForm) {
-    console.log(_form.value);
-
-    alert(this.user.usuario + ' : ' + this.user.mail + ' : ' + this.user.contrasena + ' : ' + this.user.repeatCon );
     const loading = await this.loadingController.create();
     await loading.present();
 
