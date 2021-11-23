@@ -29,8 +29,8 @@ const routes: Routes = [
   },
   {
     path: 'password-reset',
-    ...canActivate(redirectUnauthorizedToLogin),
-    loadChildren: () => import('./pages/password-reset/password-reset.module').then( m => m.PasswordResetPageModule)
+    loadChildren: () => import('./pages/password-reset/password-reset.module').then( m => m.PasswordResetPageModule),
+    ...canActivate(redirectLoggedInToTabs),
   },
   {
     path: 'barcode',
