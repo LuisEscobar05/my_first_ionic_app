@@ -11,15 +11,14 @@
   <ion-card>
     <ion-card-header>
       <ion-col>
-        <img style="width: 80%!important;" *ngIf="!show" src="https://images.pexels.com/photos/1352243/pexels-photo-1352243.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"/>
+        <br>
+        <img style="width: 80%!important;" *ngIf="!show" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/300px-Imagen_no_disponible.svg.png"/>
         <img style="width: 80%!important;" *ngIf="show" src="{{data.url}}"/>
-        <br><br>
-        <ion-item>
-          <ion-label style="text-align: center;">
-            <h1 *ngIf="!show">Manzanas Frescas</h1>
-            <h1 *ngIf="show">{{data.name}}</h1>
-          </ion-label>
-        </ion-item>
+        <br>
+        <br>
+        <ion-label style="text-align: center;">
+          <h1 *ngIf="show">{{data.name}}</h1>
+        </ion-label>
       </ion-col>
     </ion-card-header>
   </ion-card>
