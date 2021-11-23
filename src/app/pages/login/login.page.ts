@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-login',
@@ -21,10 +22,7 @@ export class LoginPage{
   userValid=true;
   mailValid=true;
   passwordValid=true;
-  user = {
-    mail: '',
-    contrasena: ''
-  }
+  user = {} as User;
 
   validateUser(event: any){
     this.isDisabled=true;
@@ -72,16 +70,21 @@ export class LoginPage{
 
     const loading = await this.loadingController.create();
     await loading.present();
-
-    this.loginService.singIn(this.user.mail, this.user.contrasena).then(
+    this.loginService.singIn(_form.value).then(
       (res) => {
         loading.dismiss();
-        this.router.navigateByUrl('/tabs', {replaceUrl: true});
+        if(this.loginService.userVerifiedMail()){
+          this.router.navigateByUrl('/tabs', {replaceUrl: true});
+        }else{
+          this.loginService.sendEmailToVerification();
+          this.loginService.singOut();
+          this.presentAlert('Ups! parece que aun no ha confirmado su email\nse ha enviado un mensaje de confirmación al email proporcionado','Verificación de Email');
+        }
       },
       async (err) => {
         loading.dismiss();
         const alert = await this.alertController.create({
-          header: 'Alguno de sus datos es incorrecto' ,
+          header: 'Alguno de sus datos son incorrectos' ,
           message: err.message,
           buttons: ['OK'],
         });
@@ -90,6 +93,18 @@ export class LoginPage{
       }
     )
 
+  }
+
+
+  async presentAlert(res,sub) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: sub,
+      // subHeader:sub,
+      message: res,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
 }
