@@ -19,7 +19,7 @@ export class CarouselPage{
       console.log(res)
       this.img = res;
     })
-   
+
   }
 
 
@@ -115,8 +115,6 @@ export class CarouselPage{
   };
 
   signOut(){
-    this.loginService.singOut().then(()=>{
-      this.router.navigateByUrl('/', {replaceUrl: true});
-    });
+    this.loginService.singOut();
   }
 }

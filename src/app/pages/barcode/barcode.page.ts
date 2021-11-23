@@ -29,9 +29,7 @@ export class BarcodePage implements OnInit {
   }
 
   signOut(){
-    this.loginService.singOut().then(()=>{
-      this.router.navigateByUrl('/', {replaceUrl: true});
-    });
+    this.loginService.singOut();
   }
 
 }
