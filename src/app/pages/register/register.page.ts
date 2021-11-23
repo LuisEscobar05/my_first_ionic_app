@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { User } from 'src/app/models/user';
 import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-register',
@@ -14,12 +15,7 @@ export class RegisterPage implements OnInit{
   mailValid=true;
   passwordValid=true;
   samePassword=true;
-  user = {
-    usuario: '',
-    mail:'',
-    contrasena: '',
-    repeatCon:'',
-  };
+  user = {} as User;
   constructor(
     private router: Router,
     private alertController: AlertController,
@@ -74,7 +70,7 @@ export class RegisterPage implements OnInit{
     let newValue = event.target.value;
     console.log(newValue);
     if(this.userValid && this.mailValid && this.passwordValid){
-      if(this.user.contrasena == this.user.repeatCon){
+      if(this.user.password == this.user.repeatPassword){
         this.samePassword= true;
         this.isDisabled=false;
       }
@@ -85,10 +81,13 @@ export class RegisterPage implements OnInit{
     const loading = await this.loadingController.create();
     await loading.present();
 
-    this.loginService.signUp(this.user.usuario,this.user.mail,this.user.contrasena ).then(
+    this.loginService.signUp(_form.value).then(
       (res) => {
         loading.dismiss();
-        this.router.navigateByUrl('/tabs', {replaceUrl: true});
+        this.loginService.sendEmailToVerification();
+        this.loginService.singOut();
+        this.presentAlert('Se registro con exito,\n por favor verifique su email\npara poder iniciar sesion','Registro exitoso!');
+        this.router.navigateByUrl('/', {replaceUrl: true});
       },
       async (err) => {
         loading.dismiss();
@@ -101,6 +100,17 @@ export class RegisterPage implements OnInit{
 
       }
     )
+  }
+
+  async presentAlert(res,sub) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: sub,
+      // subHeader:sub,
+      message: res,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
 
 
