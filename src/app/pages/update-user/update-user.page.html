@@ -26,24 +26,24 @@
       <br><br>
       <mat-form-field class="example-full-width" >
         <mat-label>Apellido Paterno</mat-label>
-        <input type="text" #lastNameParentCount matInput name="lparent" [(ngModel)]="user.lparent" placeholder="Apellido Paterno" (keyup)="validateLastNameP($event)"
+        <input type="text" #lastNameParentCount matInput name="ap_pat" [(ngModel)]="user.ap_pat" placeholder="Apellido Paterno" (keyup)="validateLastNameP($event)"
         onkeypress="if(this.value.length==30) return false;" required>
-        <mat-hint align="start" *ngIf="!lparentValid" style="color: red;">Ingrese un apellido paterno valido</mat-hint>
+        <mat-hint align="start" *ngIf="!ap_pat_valid" style="color: red;">Ingrese un apellido paterno valido</mat-hint>
         <mat-hint align="end">{{lastNameParentCount.value.length}}/30</mat-hint>
       </mat-form-field>
       <br><br>
       <mat-form-field class="example-full-width" >
         <mat-label>Apellido Materno</mat-label>
-        <input type="text" #lastNameMotherCount matInput name="lmother" [(ngModel)]="user.lmother" placeholder="Apellido Materno" (keyup)="validateLastNameM($event)"
+        <input type="text" #lastNameMotherCount matInput name="ap_mat" [(ngModel)]="user.ap_mat" placeholder="Apellido Materno" (keyup)="validateLastNameM($event)"
         onkeypress="if(this.value.length==30) return false;" required>
-        <mat-hint align="start" *ngIf="!lmotherValid" style="color: red;">Ingrese un apellido materno valido</mat-hint>
+        <mat-hint align="start" *ngIf="!ap_mat_valid" style="color: red;">Ingrese un apellido materno valido</mat-hint>
         <mat-hint align="end">{{lastNameMotherCount.value.length}}/30</mat-hint>
       </mat-form-field>
       <br><br>
       <mat-form-field class="example-full-width" >
-        <mat-label>Email</mat-label>
-        <input type="text" matInput placeholder="example@mail.com" name="mail" [(ngModel)]="user.mail" placeholder="Mail" (keyup)="validateMail($event)" required>
-        <mat-hint *ngIf="!mailValid" style="color: red;">Ingrese un email valido</mat-hint>
+        <mat-label>Usuario</mat-label>
+        <input type="text" matInput placeholder="example@mail.com" name="username" [(ngModel)]="user.username" placeholder="Mail" (keyup)="validateUsername($event)" required>
+        <mat-hint *ngIf="!usernameValid" style="color: red;">Ingrese un email valido</mat-hint>
       </mat-form-field>
       <br><br>
       <mat-form-field class="example-full-width" >
