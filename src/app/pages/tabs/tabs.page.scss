@@ -1,3 +1,16 @@
-ion-label{
-    font-size: 8pt;
+// ion-label{
+//     font-size: 8pt;
+// }
+ion-tabs { contain: none; }
+ion-tab-bar { contain: none }
+
+ // a wrapper for the position
+// .buttonWrapper {
+//   position: absolute;
+//   bottom: 20px;
+// }
+
+// for the overflow
+ion-tab-button::part(native){
+   overflow: visible;
 }
