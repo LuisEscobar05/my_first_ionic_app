@@ -18,7 +18,9 @@ export class NotificationsPage implements OnInit {
   }
 
   signOut(){
-    this.loginService.singOut();
+    this.loginService.singOut().then(()=>{
+      this.router.navigateByUrl('/', {replaceUrl: true});
+    });
   }
 
 }

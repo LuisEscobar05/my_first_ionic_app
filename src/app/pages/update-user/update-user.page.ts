@@ -124,7 +124,9 @@ export class UpdateUserPage implements OnInit {
     }
   }
   signOut() {
-    this.loginService.singOut();
+    this.loginService.singOut().then(() => {
+      this.router.navigateByUrl('/', { replaceUrl: true });
+    });
   }
 
   async presentAlert(res,sub) {

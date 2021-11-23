@@ -115,6 +115,8 @@ export class CarouselPage{
   };
 
   signOut(){
-    this.loginService.singOut();
+    this.loginService.singOut().then(()=>{
+      this.router.navigateByUrl('/', {replaceUrl: true});
+    });
   }
 }
