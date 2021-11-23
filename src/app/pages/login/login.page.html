@@ -18,7 +18,7 @@
       </ion-card-header>
       <mat-form-field class="example-full-width" >
         <mat-label>Email</mat-label>
-        <input type="text" #usuarioCount matInput name="mail" [(ngModel)]="user.mail" placeholder="Email" (keyup)="validateMail($event)"
+        <input type="text" #usuarioCount matInput name="email" [(ngModel)]="user.email" placeholder="Email" (keyup)="validateMail($event)"
         onkeypress="if(this.value.length==30) return false;" required>
         <mat-hint align="start" *ngIf="!userValid" style="color: red;">Ingrese un email valido</mat-hint>
         <mat-hint align="end">{{usuarioCount.value.length}}/30</mat-hint>
@@ -27,7 +27,7 @@
       <br>
       <mat-form-field class="example-full-width" >
         <mat-label>Contraseña</mat-label>
-        <input type="password" #passwordCount matInput placeholder="Contraseña" name="contrasena" [(ngModel)]="user.contrasena" placeholder="Contraseña" (keyup)="validatePassword($event)"
+        <input type="password" #passwordCount matInput placeholder="Contraseña" name="password" [(ngModel)]="user.password" placeholder="Contraseña" (keyup)="validatePassword($event)"
         onkeypress="if(this.value.length==20) return false;" required>
         <mat-hint align="start" *ngIf="!passwordValid" style="color: red;">Ingrese una contrasena valida</mat-hint>
         <mat-hint align="end" >{{passwordCount.value.length}}/20</mat-hint>
