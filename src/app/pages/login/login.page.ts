@@ -20,7 +20,7 @@ export class LoginPage{
 
   isDisabled = true;
   userValid=true;
-  mailValid=true;
+  emailValid=true;
   passwordValid=true;
   user = {} as User;
 
@@ -39,14 +39,14 @@ export class LoginPage{
 
   validateMail(event: any){
     this.isDisabled=true;
-    this.mailValid=false;
+    this.emailValid=false;
     let newValue = event.target.value;
     console.log(newValue);
 
     let regExp = new RegExp('^[A-Za-z0-9._]+@[A-Za-z]+(\.[A-Za-z]+)(\.[A-Za-z]+)(\.[A-Za-z]+)$');
 
     if(regExp.test(newValue))
-      this.mailValid=true;
+      this.emailValid=true;
 
   }
 
@@ -60,7 +60,7 @@ export class LoginPage{
 
     if(regExp.test(newValue)){
       this.passwordValid=true;
-      if(this.mailValid==true&&this.passwordValid==true){
+      if(this.emailValid==true&&this.passwordValid==true){
         this.isDisabled=false;
       }
     }

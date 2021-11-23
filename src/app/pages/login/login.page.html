@@ -20,7 +20,7 @@
         <mat-label>Email</mat-label>
         <input type="text" #usuarioCount matInput name="email" [(ngModel)]="user.email" placeholder="Email" (keyup)="validateMail($event)"
         onkeypress="if(this.value.length==30) return false;" required>
-        <mat-hint align="start" *ngIf="!userValid" style="color: red;">Ingrese un email valido</mat-hint>
+        <mat-hint align="start" *ngIf="!emailValid" style="color: red;">Ingrese un email valido</mat-hint>
         <mat-hint align="end">{{usuarioCount.value.length}}/30</mat-hint>
       </mat-form-field>
       <br>
@@ -36,7 +36,7 @@
       <br>
       <a mat-button [routerLink]="['/password-reset']">¿Has olvidado tu contraseña?</a>
       <br><br>
-      <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)" [routerLink]="['/tabs']">Aceptar</button>
+      <button [disabled]="isDisabled" mat-raised-button color="primary" (click)="onSubmit(formUser)">Aceptar</button>
       <br><br>
       <a mat-button [routerLink]="['/register']">Registrate aqui</a>
       <br><br>
