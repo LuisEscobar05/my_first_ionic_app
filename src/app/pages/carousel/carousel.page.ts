@@ -1,8 +1,11 @@
-import { Component} from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { ServicesService } from '../../servicescarousel/services.service'
-import { AlertController, ModalController } from '@ionic/angular';
+import { BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
+import { PassdataService } from 'src/app/services/passdata.service';
+
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.page.html',
@@ -12,9 +15,21 @@ export class CarouselPage{
 
   img=[];
 
-  constructor(private servicesServices: ServicesService, private alertCtrl: AlertController, private modalCtrl: ModalController, private loginService: LoginService,
-    private router: Router) {
+  @Input() dataQr={
+    url:'',
+    name:'',
+  }
 
+  show=false;
+
+  constructor(
+    private alertController: AlertController,
+    private barcodeScanner: BarcodeScanner,
+    private servicesServices: ServicesService,  
+    private loginService: LoginService,
+    private passdata : PassdataService,
+    private router: Router){
+    
     this.servicesServices.getImg().subscribe(res =>{
       console.log(res)
       this.img = res;
@@ -22,6 +37,45 @@ export class CarouselPage{
 
   }
 
+
+  openScanner(){
+    const options: BarcodeScannerOptions = {
+      preferFrontCamera: false,
+      showFlipCameraButton: true,
+      showTorchButton: true,
+      torchOn: false,
+      prompt: 'Place a barcode inside the scan area',
+      resultDisplayDuration: 500,
+      formats: 'EAN_13,EAN_8,QR_CODE,PDF_417 ',
+      orientation: 'portrait',
+    };
+    this.barcodeScanner.scan(options).then(barcodeData => {
+      const dataSplit = ''+barcodeData["text"];
+      const myArray = dataSplit.split(',');
+      this.dataQr.url = myArray[0];
+      this.dataQr.name = myArray[1];
+
+      // this.show = true;
+    
+      this.passdata.disparadorData.emit(this.dataQr)
+      this.router.navigateByUrl('/tabs/barcode', {replaceUrl: true});
+    }
+    ).catch(err => {
+      this.presentAlert('Ah ocurrido algun error!',err);
+    });
+    
+  }
+
+  async presentAlert(res,sub) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: sub,
+      // subHeader:sub,
+      message: res,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
 
   slideOpts = {
     autoplay:true,

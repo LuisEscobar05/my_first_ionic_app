@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 import { AlertController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
+import { PassdataService } from 'src/app/services/passdata.service';
+
 
 @Component({
   selector: 'app-barcode',
@@ -10,20 +12,27 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./barcode.page.scss'],
 })
 export class BarcodePage implements OnInit {
-  data={
+
+  dataQr={
     url:'',
     name:'',
   }
+  
   show=false;
   constructor(
     private alertController: AlertController,
     private barcodeScanner: BarcodeScanner,
     private loginService: LoginService,
+    private passdata : PassdataService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-
+    this.passdata.disparadorData.subscribe( data =>{
+      this.show = true;
+      this.dataQr.url = data.url;
+      this.dataQr.name = data.name;
+    })
   }
 
   openScanner(){
@@ -40,8 +49,8 @@ export class BarcodePage implements OnInit {
     this.barcodeScanner.scan(options).then(barcodeData => {
       const dataSplit = ''+barcodeData["text"];
       const myArray = dataSplit.split(',');
-      this.data.url = myArray[0];
-      this.data.name = myArray[1];
+      this.dataQr.url = myArray[0];
+      this.dataQr.name = myArray[1];
       this.show = true;
     }).catch(err => {
       this.presentAlert('Ah ocurrido algun error!',err);
