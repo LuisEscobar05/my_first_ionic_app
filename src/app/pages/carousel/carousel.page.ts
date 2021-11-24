@@ -1,10 +1,10 @@
 import { Component, Input} from '@angular/core';
-import { ServicesService } from '../../servicescarousel/services.service'
 import { BarcodeScanner,BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { LoginService } from 'src/app/services/login.service';
 import { PassdataService } from 'src/app/services/passdata.service';
+import { CarouselService } from 'src/app/services/carousel.service';
 
 @Component({
   selector: 'app-carousel',
@@ -25,13 +25,12 @@ export class CarouselPage{
   constructor(
     private alertController: AlertController,
     private barcodeScanner: BarcodeScanner,
-    private servicesServices: ServicesService,  
+    private carouselService: CarouselService,
     private loginService: LoginService,
     private passdata : PassdataService,
     private router: Router){
-    
-    this.servicesServices.getImg().subscribe(res =>{
-      console.log(res)
+
+    this.carouselService.getImg().subscribe(res =>{
       this.img = res;
     })
 
@@ -56,14 +55,14 @@ export class CarouselPage{
       this.dataQr.name = myArray[1];
 
       // this.show = true;
-    
+
       this.passdata.disparadorData.emit(this.dataQr)
       this.router.navigateByUrl('/tabs/barcode', {replaceUrl: true});
     }
     ).catch(err => {
       this.presentAlert('Ah ocurrido algun error!',err);
     });
-    
+
   }
 
   async presentAlert(res,sub) {
