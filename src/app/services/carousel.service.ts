@@ -11,7 +11,7 @@ export class CarouselService {
   constructor(private firestore: Firestore) { }
 
   getImg(){
-    const notesRef = collection(this.firestore, 'carousel');
-    return collectionData(notesRef, {idField: 'id'}) as Observable<Carousel[]>;
+    const ref = collection(this.firestore, 'carousel');
+    return collectionData(ref, {idField: 'id'}) as Observable<Carousel[]>;
   }
 }
